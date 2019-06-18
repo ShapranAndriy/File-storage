@@ -1,6 +1,7 @@
 'use strict';
 
 const http = require('http');
+const body = require('./lib/parse-body');
 let server = null;
 
 /**
@@ -9,8 +10,11 @@ let server = null;
  * @param {Router} router - Router with method "route".
  */
 module.exports.start = (port = 2000, router = {}) => {
-    server = http.createServer((request, response) =>
-        router.route(request, response));
+    server = http.createServer((request, response) => {
+        body.parse(request, (error) => {
+            error ? router.error(error, response) : router.route(request, response);
+        });
+    });
 
     server.listen(port, () => 
         console.log(`Server listening at port: ${port}.`));

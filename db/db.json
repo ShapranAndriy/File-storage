@@ -1,0 +1,19 @@
+{
+    "files": [
+        {
+            "name":"1",
+            "type": "txt",
+            "path": "./db/files/1.txt"
+        },
+        {
+            "name":"2",
+            "type": "txt",
+            "path": "./db/files/2.txt"
+        },
+        {
+            "name":"3",
+            "type": "txt",
+            "path": "./db/files/3.txt"
+        }
+    ]
+}

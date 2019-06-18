@@ -39,19 +39,26 @@ class Router {
      */
     route(request, response) {
         const { url, method } = request;
-        const fn = this._routs[method].route(url);
-        fn ? fn(request, response) : this.error(request, response);
+
+        const routs = this._routs[method];
+
+        if(routs) {
+            const fn = this._routs[method].route(url);
+            fn ? fn(request, response) : this.error(new Error(`doesn't exist this URL: "${url}" in method: ${method}.`), response);
+        }
+        else {
+            this.error(new Error(`method: ${method} not found.`), response);
+        }
     }
 
     /**
      * If URL not found
-     * @private
      * @param {Request} request
      * @param {Response} response
      */
-    error(request, response) {
+    error(error, response) {
         response.writeHead(404, { 'Content-Type': 'text/plain' });
-        response.write(`Page ${request.url} not found`);
+        response.write(error.toString());
         response.end();
     }
 }
