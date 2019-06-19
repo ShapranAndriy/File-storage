@@ -5,14 +5,7 @@ const assert = require('assert');
 
 const TXTFile = require('../file/TXT');
 const TXT = require('../file/TXT/commands');
-
 const txtPath = './db/files/1.txt';
-
-function testTxt() {
-    TXTFile.factory(txtPath, (error, txtFile) => {
-        txtFile.execute(TXT.chang);
-    });
-}
 
 function testRead() {
     TXTFile.factory(txtPath, (error, txtFile) => {
@@ -21,7 +14,15 @@ function testRead() {
     });
 }
 
+function testWrite() {
+    TXTFile.factory(txtPath, (error, file) => {
+        file.action(TXT.chang, 'testWrite');
+        file.action(TXT.chang, 'testWrite');
+        file.action(TXT.chang, 'testWrite');
+    });
+}
+
 module.exports.test = () => {
     testRead();
-    testTxt();
+    testWrite();
 }

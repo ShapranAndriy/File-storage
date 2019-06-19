@@ -10,7 +10,7 @@ class File extends IFile {
     /**
      * 
      * @param {String} path - path to the file.
-     * @param {Function} cb - error: Error, data: File 
+     * @param {function(Error, File)} cb - error: Error, data: File 
      */
     static factory (path, cb) {
         fs.readFile(path, (error, data) => { 
@@ -21,6 +21,17 @@ class File extends IFile {
                 cb(error, file);
             }
         });
+    }
+
+    action(Command, data) {
+        const command = new Command(this);
+        command.execute(data);
+
+        this._commands === null ? this._commands = [command] : this._commands.push(command);
+    }
+
+    undo() {
+
     }
 
     /**

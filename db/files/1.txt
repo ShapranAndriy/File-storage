@@ -1,3 +1,1 @@
-Decided to write a database in Javascript for server side developer freedom in NodeJS. 
-ES6 is my preferred flavor of Javascript, so off I went. 
-Here is what I learned from doing this in a weekend.
+Файл номер

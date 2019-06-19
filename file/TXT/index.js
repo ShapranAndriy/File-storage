@@ -20,11 +20,12 @@ class TXTFile extends File {
     }
 
     /**
-     * @param {TXTCommand} command - command for *.TXT file. 
+     * @param {TXTCommand} command - command for *.TXT file.
+     * @param {String} data - new text.
      */
-    execute(Command) {
+    action(Command, data) {
         const command = new Command(this);
-        command.execute();
+        command.execute(data);
 
         this._commands === null ? this._commands = [command] : this._commands.push(command);
     }

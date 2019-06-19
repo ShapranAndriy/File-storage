@@ -11,6 +11,7 @@ let server = null;
  */
 module.exports.start = (port = 2000, router = {}) => {
     server = http.createServer((request, response) => {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         body.parse(request, (error) => {
             error ? router.error(error, response) : router.route(request, response);
         });
