@@ -23,16 +23,6 @@ router.get('/api/files', (request, response) => {
         });
 });
 
-/**
- * {
- *      index: 0
- *      command: chang,
- *      data: str
- * }
- * 
- * 
- */
-
 router.post('/api/file/chang', (request, response) => {
     const {index, command, data} = request.body;
     db.findFileByIndex(index)

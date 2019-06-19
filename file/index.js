@@ -1,7 +1,6 @@
 const IFile = require('./IFile');
 const fs = require('fs');
 
-
 class File extends IFile {
     constructor(path, name, type, bufferData) {
         super(name, type, path, bufferData);
@@ -10,16 +9,17 @@ class File extends IFile {
     /**
      * 
      * @param {String} path - path to the file.
-     * @param {function(Error, File)} cb - error: Error, data: File 
      */
-    static factory (path, cb) {
-        fs.readFile(path, (error, data) => { 
-            if (error) cb(error, data);
-            else {
-                const file = new File(path, null, null, data);
-                file.initialize(path);
-                cb(error, file);
-            }
+    static factory(path) {
+        return new Promise((resolve, reject) => {
+           fs.readFile(path, (error, data) => {
+               if (error) reject(error);
+               else {
+                   const file = new File(path, null, null, data);
+                   file.initialize(path);
+                   resolve(file);
+               }
+           });
         });
     }
 

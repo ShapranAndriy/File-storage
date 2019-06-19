@@ -8,16 +8,22 @@ class TXTFile extends File {
         super(name, type, path, bufferData);
     }
 
-    static factory (path, cb) {
-        fs.readFile(path, (error, data) => { 
-            if (error) cb(error, data);
-            else {
-                const file = new TXTFile(path, null, null, data);
-                file.initialize(path);
-                cb(error, file);
-            }
-        });
-    }
+    /**
+     * @param {String} path - path to the file
+     * @param {function(Error, File)} cb - 
+     */
+     static factory(path) {
+         return new Promise((resolve, reject) => {
+            fs.readFile(path, (error, data) => {
+                if (error) reject(error);
+                else {
+                    const file = new TXTFile(path, null, null, data);
+                    file.initialize(path);
+                    resolve(file);
+                }
+            });
+         });
+     }
 
     /**
      * @param {TXTCommand} command - command for *.TXT file.
@@ -26,7 +32,6 @@ class TXTFile extends File {
     action(Command, data) {
         const command = new Command(this);
         command.execute(data);
-
         this._commands === null ? this._commands = [command] : this._commands.push(command);
     }
 
@@ -34,5 +39,4 @@ class TXTFile extends File {
 
     }
 }
-
 module.exports = TXTFile;

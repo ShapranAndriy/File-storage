@@ -13,15 +13,12 @@ class FileController extends Controller {
      */
     change(path, command, data) {
         return new Promise((resolve, reject) => {
-            File.factory(path, (error, file) => {
-                if(error) {
-                    reject(error);
-                }
-                else {
-                    file.action(command, data);
-                    resolve(file)
-                }
-            });
+
+            File.factory(path).then(file => {
+                file.action(command, data);
+                resolve(file)
+            })
+            .catch(error => reject(error));
         });
     }
 }
