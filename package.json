@@ -1,10 +1,11 @@
 {
   "name": "file-storage",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Editable file storage",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test",
+    "start": "node ./index"
   },
   "repository": {
     "type": "git",
@@ -21,9 +22,6 @@
   },
   "homepage": "https://github.com/Slavintir/File-storage#readme",
   "dependencies": {
-    "jimp": "^0.6.4",
-    "node-gyp": "^5.0.0",
-    "python": "0.0.4",
-    "rebuild": "^0.1.2"
+    "jimp": "^0.6.4"
   }
 }
