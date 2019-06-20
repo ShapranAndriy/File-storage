@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/Slavintir/File-storage/issues"
   },
-  "homepage": "https://github.com/Slavintir/File-storage#readme"
+  "homepage": "https://github.com/Slavintir/File-storage#readme",
+  "dependencies": {
+    "jimp": "^0.6.4",
+    "node-gyp": "^5.0.0",
+    "python": "0.0.4",
+    "rebuild": "^0.1.2"
+  }
 }

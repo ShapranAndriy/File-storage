@@ -1,5 +1,5 @@
-const Chang = require('./Chang');
+const Chang = require('./chang');
 
 module.exports = {
-    chang: Chang
+    chang: Chang,
 };

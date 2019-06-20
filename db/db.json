@@ -14,6 +14,11 @@
             "name":"3",
             "type": "txt",
             "path": "./db/files/3.txt"
+        },
+        {
+            "name":"image",
+            "type": "jpg",
+            "path" : "./db/files/image.jpg" 
         }
     ]
 }
