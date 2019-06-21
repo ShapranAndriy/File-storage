@@ -25,7 +25,7 @@
 ```
 
 - Change the "*.jpg", "*.bmp", "*.png" files
-  method: POST, url: http://localhost:2000/api/file/chang
+  method: POST, url: http://localhost:2000/api/file/chang/img
 ```json
 {
   "index" : "3",                
